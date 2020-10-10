@@ -38,6 +38,9 @@ class App extends Component {
     }
   }
 
+
+
+
   calculateFaceLocation = (data) => {
     // console.log('calculateFaceLocation data', data);
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
@@ -82,7 +85,7 @@ class App extends Component {
       this.setState({isSignedIn: 'true'})
     }
     this.setState({route: route});
-    console.log('onRouteChange() this.state.route ', this.state.route )
+    console.log('App.onRouteChange() this.state.route ', this.state.route )
   }
 
   render() {

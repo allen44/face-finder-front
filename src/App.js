@@ -67,7 +67,7 @@ class App extends Component {
   // }
   
   calculateFaceLocation = (data) => {
-    // console.log('calculateFaceLocation data', data);
+    console.log('calculateFaceLocation data', data);
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     // console.log('clarifaiFace', clarifaiFace);
     const image = document.getElementById('inputimage')
@@ -95,27 +95,34 @@ class App extends Component {
   }
 
   onPictureSubmit = () => {
-    console.log('onPictureSubmit() this.state.id', this.state.id)
-    this.setState({imageUrl: this.state.input })
-
-        .then(response => {
-          if (response) {
-            fetch('http://localhost:3001/image', {
-              method: 'put',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({
-                  id: this.state.user.id
-                  })
-            })
-              .then(response => response.json())
-              .then(count => {
-                this.setState(Object.assign(this.state.user, { entries: count }))
-              })
-              .catch(console.log);
-          }
-          this.displayFaceBox(this.calculateFaceLocation(response))
-        })
-        .catch(err => console.log(err));
+    console.log('onPictureSubmit() this.state.input', this.state.input)
+    this.setState({imageUrl: this.state.input });
+    fetch('http://localhost:3001/imageurl', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+          input: this.state.input
+          })
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response) {
+          fetch('http://localhost:3001/image', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: this.state.user.id
+                })
+          })
+          .then(response => response.json())
+          .then(count => {
+            this.setState(Object.assign(this.state.user, { entries: count }))
+          })
+          .catch(console.log);
+        }
+        this.displayFaceBox(this.calculateFaceLocation(response))
+      })
+      .catch(err => console.log(err));
   }
 
   onRouteChange = (route) => {

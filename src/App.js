@@ -9,6 +9,7 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import Rank from './components/Rank/Rank'
 import './App.css';
 
+const BACKEND_URL = 'https://intense-badlands-36859.herokuapp.com'
 
 const initialState = {
   input: '',
@@ -55,7 +56,7 @@ class App extends Component {
 
   // componentDidMount() {
   //   console.log('app.componentDidMount()')
-  //   fetch('http://localhost:3001/signin', {
+  //   fetch(`${BACKEND_URL}/signin`, {
   //     method: 'post',
   //     headers: {'Content-Type': 'application/json'},
   //     body: JSON.stringify({
@@ -97,7 +98,7 @@ class App extends Component {
   onPictureSubmit = () => {
     console.log('onPictureSubmit() this.state.input', this.state.input)
     this.setState({imageUrl: this.state.input });
-    fetch('http://localhost:3001/imageurl', {
+    fetch(`${BACKEND_URL}/imageurl`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -107,7 +108,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3001/image', {
+          fetch(`${BACKEND_URL}/image`, {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

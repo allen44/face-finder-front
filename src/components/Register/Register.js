@@ -1,5 +1,5 @@
 import React  from 'react';
-
+const BACKEND_URL = 'https://intense-badlands-36859.herokuapp.com'
 
 class Register extends React.Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class Register extends React.Component {
 
     onSubmitSignIn = () => {
         console.log('Register.onSubmitSignIn() this.state', this.state);
-        fetch('http://localhost:3001/register', {
+        fetch(`${BACKEND_URL}/register`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

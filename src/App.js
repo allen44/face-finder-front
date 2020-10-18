@@ -9,7 +9,7 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import Rank from './components/Rank/Rank'
 import './App.css';
 
-
+console.log(process.env);
 //debugging on localhost
 if (process.env.DEBUG) {
   process.env.BACKEND_URL = "http://127.0.0.1:3001"

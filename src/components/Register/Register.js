@@ -3,7 +3,9 @@ import React  from 'react';
 //debugging on localhost
 if (process.env.DEBUG) {
     process.env.BACKEND_URL = "http://127.0.0.1:3001"
-  }
+  } else {
+    process.env.BACKEND_URL = "https://intense-badlands-36859.herokuapp.com";
+}
 
 class Register extends React.Component {
     constructor(props) {

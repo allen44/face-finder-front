@@ -11,8 +11,11 @@ import './App.css';
 
 console.log(process.env);
 //debugging on localhost
+//debugging on localhost
 if (process.env.DEBUG) {
   process.env.BACKEND_URL = "http://127.0.0.1:3001"
+} else {
+  process.env.BACKEND_URL = "https://intense-badlands-36859.herokuapp.com";
 }
 console.log('process.env.BACKEND_URL: ', process.env.BACKEND_URL);
 

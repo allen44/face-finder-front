@@ -9,7 +9,12 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import Rank from './components/Rank/Rank'
 import './App.css';
 
-const BACKEND_URL = 'https://intense-badlands-36859.herokuapp.com'
+
+//debugging on localhost
+if (process.env.DEBUG) {
+  process.env.BACKEND_URL = "http://127.0.0.1:3001"
+}
+console.log('process.env.BACKEND_URL: ', process.env.BACKEND_URL);
 
 const initialState = {
   input: '',

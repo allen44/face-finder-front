@@ -61,7 +61,7 @@ class App extends Component {
 
   // componentDidMount() {
   //   console.log('app.componentDidMount()')
-  //   fetch(`${BACKEND_URL}/signin`, {
+  //   fetch(`${process.env.BACKEND_URL}/signin`, {
   //     method: 'post',
   //     headers: {'Content-Type': 'application/json'},
   //     body: JSON.stringify({

@@ -9,15 +9,9 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import Rank from './components/Rank/Rank'
 import './App.css';
 
-console.log(process.env);
-//debugging on localhost
-//debugging on localhost
-if (process.env.DEBUG) {
-  process.env.BACKEND_URL = "http://127.0.0.1:3001"
-} else {
-  process.env.BACKEND_URL = "https://intense-badlands-36859.herokuapp.com";
-}
-console.log('process.env.BACKEND_URL: ', process.env.BACKEND_URL);
+const BACKEND_URL = "https://intense-badlands-36859.herokuapp.com";
+
+console.log('BACKEND_URL: ', BACKEND_URL);
 
 const initialState = {
   input: '',
@@ -64,7 +58,7 @@ class App extends Component {
 
   // componentDidMount() {
   //   console.log('app.componentDidMount()')
-  //   fetch(`${process.env.BACKEND_URL}/signin`, {
+  //   fetch(`${BACKEND_URL}/signin`, {
   //     method: 'post',
   //     headers: {'Content-Type': 'application/json'},
   //     body: JSON.stringify({
@@ -106,7 +100,7 @@ class App extends Component {
   onPictureSubmit = () => {
     console.log('onPictureSubmit() this.state.input', this.state.input)
     this.setState({imageUrl: this.state.input });
-    fetch(`${process.env.BACKEND_URL}/imageurl`, {
+    fetch(`${BACKEND_URL}/imageurl`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -116,7 +110,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch(`${process.env.BACKEND_URL}/image`, {
+          fetch(`${BACKEND_URL}/image`, {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

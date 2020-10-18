@@ -1,11 +1,6 @@
 import React  from 'react';
 
-//debugging on localhost
-if (process.env.DEBUG) {
-    process.env.BACKEND_URL = "http://127.0.0.1:3001"
-  } else {
-    process.env.BACKEND_URL = "https://intense-badlands-36859.herokuapp.com";
-}
+const BACKEND_URL = "https://intense-badlands-36859.herokuapp.com";
 
 
 class Signin extends React.Component {
@@ -27,7 +22,7 @@ class Signin extends React.Component {
 
     onSubmitSignIn = () => {
         console.log('Signin.onSubmitSignIn() this.state', this.state);
-        fetch(`${process.env.BACKEND_URL}/signin`, {
+        fetch(`${BACKEND_URL}/signin`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

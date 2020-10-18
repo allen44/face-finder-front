@@ -103,7 +103,7 @@ class App extends Component {
   onPictureSubmit = () => {
     console.log('onPictureSubmit() this.state.input', this.state.input)
     this.setState({imageUrl: this.state.input });
-    fetch(`${BACKEND_URL}/imageurl`, {
+    fetch(`${process.env.BACKEND_URL}/imageurl`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -113,7 +113,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch(`${BACKEND_URL}/image`, {
+          fetch(`${process.env.BACKEND_URL}/image`, {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
